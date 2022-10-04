@@ -54,39 +54,10 @@ public class Vista {
 
         String nom1 = nombre1.getText();
         String nom2 = nombre2.getText();
-        int grad = 1;
-        boolean encontrado = false;
-        Set resultados = new TreeSet<String>();
-        resultados = m.consulta(nom1);
-        System.out.println(m.consulta(nom1));
-
-        while(!encontrado){
-            Iterator<String> nombres = resultados.iterator();
-            while(nombres.hasNext()){
-
-                if(nom2.equalsIgnoreCase(nombres.next())){
-                    System.out.println("encontrado");
-                    encontrado = true;
-                    break;
-                }
-            }
-            if(!encontrado){
-                System.out.println("entro if");
-                grad++;
-                Set masResultados = new TreeSet<String>();
-                Iterator<String> agregarNombres = resultados.iterator();
-                while(agregarNombres.hasNext()){
-
-                    masResultados.addAll(m.consulta(agregarNombres.next()));
-
-                    System.out.println(resultados);
-                }
-                resultados.addAll(masResultados);
-            }
-        }
 
 
-        grado.setText(String.valueOf(grad));
+
+        grado.setText(m.getGrado(nom1, nom2));
 
     }
 
